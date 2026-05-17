@@ -1,0 +1,28 @@
+{
+  "name": "@unhosted-ai/mcp-server",
+  "version": "0.0.1",
+  "description": "MCP server that exposes a running unhosted daemon's local-first capabilities (memory, web fetch, vram-pool status) as tools to MCP-aware clients like Claude Desktop.",
+  "license": "AGPL-3.0-or-later",
+  "author": "Ankur Sinha",
+  "type": "module",
+  "bin": {
+    "unhosted-mcp-server": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ]
+}
