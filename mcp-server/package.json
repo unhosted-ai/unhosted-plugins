@@ -8,10 +8,29 @@
   "bin": {
     "unhosted-mcp-server": "dist/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unhosted-ai/unhosted-plugins.git",
+    "directory": "mcp-server"
+  },
+  "homepage": "https://github.com/unhosted-ai/unhosted-plugins/tree/main/mcp-server#readme",
+  "bugs": "https://github.com/unhosted-ai/unhosted-plugins/issues",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "unhosted",
+    "claude-desktop",
+    "cursor",
+    "zed",
+    "local-first",
+    "llama-cpp"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && chmod +x dist/index.js",
     "start": "node dist/index.js",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "test": "node --test test/*.test.mjs",
+    "prepublishOnly": "npm run build && npm test"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0"
@@ -24,5 +43,8 @@
     "dist/",
     "README.md",
     "LICENSE"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }
