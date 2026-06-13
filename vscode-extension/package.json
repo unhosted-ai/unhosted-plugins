@@ -1,0 +1,101 @@
+{
+  "name": "unhosted-vscode",
+  "displayName": "unhosted",
+  "description": "Chat with the local-first unhosted daemon from VS Code — your own hardware, your own models, nothing leaves your machine.",
+  "version": "0.0.1",
+  "publisher": "unhosted-ai",
+  "license": "AGPL-3.0-or-later",
+  "author": "Ankur Sinha",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unhosted-ai/unhosted-plugins.git",
+    "directory": "vscode-extension"
+  },
+  "homepage": "https://github.com/unhosted-ai/unhosted-plugins/tree/main/vscode-extension#readme",
+  "bugs": "https://github.com/unhosted-ai/unhosted-plugins/issues",
+  "keywords": [
+    "unhosted",
+    "local-first",
+    "llama-cpp",
+    "ollama",
+    "lm-studio",
+    "ai",
+    "chat"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "AI",
+    "Chat",
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "unhosted.openChat",
+        "title": "unhosted: Open Chat"
+      },
+      {
+        "command": "unhosted.explainSelection",
+        "title": "unhosted: Explain Selection"
+      },
+      {
+        "command": "unhosted.askAboutSelection",
+        "title": "unhosted: Ask About Selection"
+      },
+      {
+        "command": "unhosted.checkStatus",
+        "title": "unhosted: Check Daemon Status"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "unhosted.explainSelection",
+          "when": "editorHasSelection",
+          "group": "unhosted@1"
+        },
+        {
+          "command": "unhosted.askAboutSelection",
+          "when": "editorHasSelection",
+          "group": "unhosted@2"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "unhosted",
+      "properties": {
+        "unhosted.baseUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:7777",
+          "description": "Base URL of the unhosted daemon."
+        },
+        "unhosted.bearerToken": {
+          "type": "string",
+          "default": "",
+          "description": "Bearer token for non-loopback daemons (Settings → for developers → api access in the unhosted UI). Leave empty for a daemon on this machine."
+        },
+        "unhosted.maxTokens": {
+          "type": "number",
+          "default": 1024,
+          "description": "max_tokens for chat completions."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "package": "npx --yes @vscode/vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}
