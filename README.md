@@ -9,6 +9,7 @@ Lives in its own repo so the core daemon stays small and plugin work doesn't blo
 | Directory | What it is | Status | Language |
 | --- | --- | --- | --- |
 | [`mcp-server/`](./mcp-server) | Exposes unhosted's local capabilities (memory, web fetch, vram-pool status) as MCP tools so MCP-aware clients (Claude Desktop, IDE extensions) can call into the daemon. | scaffolded | TypeScript |
+| [`vscode-extension/`](./vscode-extension) | VS Code extension: streaming chat panel against the local daemon, explain/ask-about-selection context-menu commands, daemon status bar indicator. | working (local install) | TypeScript |
 
 Planned (not started):
 
